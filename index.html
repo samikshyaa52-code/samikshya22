@@ -1,104 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Presentation</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: linear-gradient(120deg, #667eea, #764ba2);
-            color: white;
-        }
+  <meta charset="UTF-8">
+  <title>Sports World</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #43cea2, #185a9d);
+      color: white;
+    }
 
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 50px 0;
-        }
+    header {
+      text-align: center;
+      padding: 30px;
+      background: rgba(0,0,0,0.3);
+    }
 
-        .slide {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
+    header h1 {
+      margin: 0;
+      font-size: 40px;
+    }
 
-        h1 {
-            text-align: center;
-            font-size: 40px;
-        }
+    .sports-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
 
-        h2 {
-            color: #ffeb3b;
-            margin-bottom: 15px;
-        }
+    .sport-card {
+      background: white;
+      color: #333;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
 
-        p, li {
-            font-size: 18px;
-            line-height: 1.6;
-        }
+    .sport-card:hover {
+      transform: scale(1.05);
+    }
 
-        ul {
-            margin-left: 20px;
-        }
+    .sport-card h2 {
+      color: #185a9d;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-    </style>
+    #players {
+      background: rgba(0,0,0,0.4);
+      margin: 20px;
+      padding: 30px;
+      border-radius: 15px;
+      display: none;
+    }
+
+    #players h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+    }
+
+    li {
+      font-size: 18px;
+      padding: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      background: rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
+<header>
+  <h1>🏆 Sports World</h1>
+  <p>Click on a sport to see players</p>
+</header>
 
-    <div class="slide">
-        <h1>My Presentation Title</h1>
-        <p style="text-align:center;">Presented by: Your Name</p>
-    </div>
+<div class="sports-container">
+  <div class="sport-card" onclick="showPlayers('soccer')">
+    <h2>⚽ Soccer</h2>
+  </div>
 
-    <div class="slide">
-        <h2>Introduction</h2>
-        <p>
-            This presentation explains the main idea of the topic in a simple
-            and easy way. It is designed using HTML and CSS.
-        </p>
-    </div>
+  <div class="sport-card" onclick="showPlayers('basketball')">
+    <h2>🏀 Basketball</h2>
+  </div>
 
-    <div class="slide">
-        <h2>Objectives</h2>
-        <ul>
-            <li>To understand the topic</li>
-            <li>To explain key points clearly</li>
-            <li>To present information attractively</li>
-        </ul>
-    </div>
+  <div class="sport-card" onclick="showPlayers('volleyball')">
+    <h2>🏐 Volleyball</h2>
+  </div>
 
-    <div class="slide">
-        <h2>Main Content</h2>
-        <p>
-            Here you can write the main content of your presentation.
-            You can add paragraphs, lists, or images if needed.
-        </p>
-    </div>
+  <div class="sport-card" onclick="showPlayers('badminton')">
+    <h2>🏸 Badminton</h2>
+  </div>
+</div>
 
-    <div class="slide">
-        <h2>Conclusion</h2>
-        <p>
-            This is the conclusion slide. Summarize your topic and
-            thank your audience.
-        </p>
-    </div>
-
+<div id="players">
+  <h2 id="sportTitle"></h2>
+  <ul id="playerList"></ul>
 </div>
 
 <footer>
-    © 2026 | HTML Presentation
+  © 2026 | Simple Sports Website
 </footer>
+
+<script>
+  const data = {
+    soccer: ["Lionel Messi", "Cristiano Ronaldo", "Neymar Jr", "Kylian Mbappé"],
+    basketball: ["LeBron James", "Stephen Curry", "Kevin Durant", "Michael Jordan"],
+    volleyball: ["Karch Kiraly", "Giba", "Wilfredo León", "Zhu Ting"],
+    badminton: ["Lin Dan", "Lee Chong Wei", "PV Sindhu", "Viktor Axelsen"]
+  };
+
+  function showPlayers(sport) {
+    const playersDiv = document.getElementById("players");
+    const title = document.getElementById("sportTitle");
+    const list = document.getElementById("playerList");
+
+    title.innerText = sport.toUpperCase() + " Players";
+    list.innerHTML = "";
+
+    data[sport].forEach(player => {
+      const li = document.createElement("li");
+      li.innerText = player;
+      list.appendChild(li);
+    });
+
+    playersDiv.style.display = "block";
+  }
+</script>
 
 </body>
 </html>
