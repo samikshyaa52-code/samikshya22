@@ -1,100 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Tic Tac Toe</title>
+    <meta charset="UTF-8">
+    <title>My Presentation</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f2f2f2;
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(120deg, #667eea, #764ba2);
+            color: white;
         }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 50px 0;
+        }
+
+        .slide {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
         h1 {
-            margin-top: 30px;
-        }
-        .board {
-            display: grid;
-            grid-template-columns: repeat(3, 100px);
-            grid-gap: 10px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-        .cell {
-            width: 100px;
-            height: 100px;
-            background-color: white;
+            text-align: center;
             font-size: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border: 2px solid #333;
         }
-        .cell:hover {
-            background-color: #e0e0e0;
+
+        h2 {
+            color: #ffeb3b;
+            margin-bottom: 15px;
         }
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
+
+        p, li {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
 
-<h1>Tic Tac Toe ❌⭕</h1>
+<div class="container">
 
-<div class="board">
-    <div class="cell" onclick="play(this,0)"></div>
-    <div class="cell" onclick="play(this,1)"></div>
-    <div class="cell" onclick="play(this,2)"></div>
-    <div class="cell" onclick="play(this,3)"></div>
-    <div class="cell" onclick="play(this,4)"></div>
-    <div class="cell" onclick="play(this,5)"></div>
-    <div class="cell" onclick="play(this,6)"></div>
-    <div class="cell" onclick="play(this,7)"></div>
-    <div class="cell" onclick="play(this,8)"></div>
+    <div class="slide">
+        <h1>My Presentation Title</h1>
+        <p style="text-align:center;">Presented by: Your Name</p>
+    </div>
+
+    <div class="slide">
+        <h2>Introduction</h2>
+        <p>
+            This presentation explains the main idea of the topic in a simple
+            and easy way. It is designed using HTML and CSS.
+        </p>
+    </div>
+
+    <div class="slide">
+        <h2>Objectives</h2>
+        <ul>
+            <li>To understand the topic</li>
+            <li>To explain key points clearly</li>
+            <li>To present information attractively</li>
+        </ul>
+    </div>
+
+    <div class="slide">
+        <h2>Main Content</h2>
+        <p>
+            Here you can write the main content of your presentation.
+            You can add paragraphs, lists, or images if needed.
+        </p>
+    </div>
+
+    <div class="slide">
+        <h2>Conclusion</h2>
+        <p>
+            This is the conclusion slide. Summarize your topic and
+            thank your audience.
+        </p>
+    </div>
+
 </div>
 
-<button onclick="resetGame()">Restart Game</button>
-
-<script>
-    let board = ["", "", "", "", "", "", "", "", ""];
-    let currentPlayer = "X";
-
-    function play(cell, index) {
-        if (board[index] === "") {
-            board[index] = currentPlayer;
-            cell.innerText = currentPlayer;
-
-            if (checkWinner()) {
-                alert(currentPlayer + " Wins! 🎉");
-                resetGame();
-                return;
-            }
-
-            currentPlayer = currentPlayer === "X" ? "O" : "X";
-        }
-    }
-
-    function checkWinner() {
-        const wins = [
-            [0,1,2], [3,4,5], [6,7,8],
-            [0,3,6], [1,4,7], [2,5,8],
-            [0,4,8], [2,4,6]
-        ];
-
-        return wins.some(combo => {
-            return combo.every(index => board[index] === currentPlayer);
-        });
-    }
-
-    function resetGame() {
-        board = ["", "", "", "", "", "", "", "", ""];
-        currentPlayer = "X";
-        document.querySelectorAll(".cell").forEach(cell => cell.innerText = "");
-    }
-</script>
+<footer>
+    © 2026 | HTML Presentation
+</footer>
 
 </body>
 </html>
