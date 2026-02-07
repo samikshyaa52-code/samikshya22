@@ -2,38 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Boy ❤️ Girl</title>
+    <title>My Valentine ❤️</title>
+
     <style>
         body {
             margin: 0;
             height: 100vh;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Segoe UI', sans-serif;
         }
 
-        .card {
+        .box {
             background: white;
-            padding: 30px;
-            width: 320px;
-            border-radius: 20px;
+            padding: 40px;
+            border-radius: 25px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+            width: 350px;
         }
 
         h1 {
-            color: #ff4d6d;
+            color: #ff3366;
+            margin-bottom: 15px;
         }
 
-        .characters {
-            font-size: 60px;
-            margin: 20px 0;
+        p {
+            color: #444;
+            font-size: 16px;
+            line-height: 1.6;
         }
 
         .heart {
-            color: red;
+            font-size: 50px;
             animation: beat 1s infinite;
         }
 
@@ -43,47 +46,44 @@
             100% { transform: scale(1); }
         }
 
-        p {
-            color: #555;
-            font-size: 16px;
-        }
-
         button {
-            margin-top: 20px;
-            padding: 10px 20px;
+            margin-top: 25px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 20px;
-            background: #ff4d6d;
+            border-radius: 25px;
+            background: #ff3366;
             color: white;
-            font-size: 15px;
+            font-size: 16px;
             cursor: pointer;
         }
 
         button:hover {
-            background: #e63950;
+            background: #e62e5c;
         }
     </style>
 </head>
+
 <body>
 
-    <div class="card">
-        <h1>Love Story</h1>
+    <div class="box">
+        <h1>Hey You 💖</h1>
 
-        <div class="characters">
-            👦 <span class="heart">❤️</span> 👧
-        </div>
+        <div class="heart">❤️</div>
 
         <p>
-            Once upon a time, a boy met a girl.<br>
-            They smiled, talked, and slowly fell in love 💕
+            You make my days brighter and my heart happier.<br>
+            So today, I just want to ask you something special…
         </p>
 
-        <button onclick="showLove()">Click for Magic</button>
+        <p><strong>Will you be my Valentine?</strong></p>
+        <p><strong>I love youu ❤️</strong></p>
+
+        <button onclick="showLove()">Yes 💕</button>
     </div>
 
     <script>
         function showLove() {
-            alert("Love is simple, sweet, and beautiful 💖");
+            alert("Yay! You just made my heart smile 💖 I love youu!");
         }
     </script>
 
