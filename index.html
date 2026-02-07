@@ -3,59 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Be My Valentine ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            height: 100vh;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
         }
 
-        /* Floating hearts */
-        .heart {
-            position: absolute;
-            font-size: 30px;
-            color: #ff3366;
-            animation: floatUp 6s linear infinite;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0.8); opacity: 1; }
-            100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
-        }
-
-        /* Main card */
         .card {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.95);
+            background: white;
+            padding: 45px 40px;
             border-radius: 30px;
-            padding: 50px 40px;
             text-align: center;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            max-width: 400px;
+            width: 380px;
         }
 
         h1 {
-            font-family: 'Pacifico', cursive;
             color: #ff3366;
-            font-size: 42px;
-            margin: 0;
+            font-size: 36px;
+            margin-bottom: 10px;
         }
 
         p {
-            color: #444;
             font-size: 18px;
-            margin: 15px 0 25px;
-            line-height: 1.5;
+            color: #444;
+            line-height: 1.6;
         }
 
         button {
-            padding: 15px 30px;
+            margin-top: 25px;
+            padding: 14px 30px;
             border: none;
             border-radius: 30px;
             background: #ff3366;
@@ -66,83 +50,78 @@
         }
 
         button:hover {
-            background: #e62e5c;
             transform: scale(1.1);
+            background: #e62e5c;
         }
 
-        /* Confetti container */
-        #confetti {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
+        /* Hidden love message */
+        #loveText {
+            display: none;
+            margin-top: 25px;
+            font-size: 26px;
+            color: #ff3366;
+            font-weight: bold;
+            animation: fadeIn 1.5s ease-in-out;
         }
 
-        .confetti-piece {
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Floating hearts */
+        .heart {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #ff3366;
-            opacity: 0.8;
-            transform: rotate(0deg);
-            animation: fall 3s linear infinite;
+            color: #ff3366;
+            font-size: 25px;
+            animation: floatUp 6s linear infinite;
         }
 
-        @keyframes fall {
-            0% { transform: translateY(-10px) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(360deg); }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
         }
     </style>
 </head>
 
 <body>
 
-<div id="confetti"></div>
-
-<!-- Floating hearts -->
-<script>
-    const colors = ['#ff3366', '#ff66a3', '#ff99c2', '#ffb3cc'];
-    for(let i=0;i<30;i++){
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.fontSize = Math.random() * 30 + 20 + 'px';
-        heart.style.animationDuration = (4 + Math.random() * 3) + 's';
-        heart.innerHTML = '❤️';
-        document.body.appendChild(heart);
-    }
-</script>
-
 <div class="card">
     <h1>Hey You 💖</h1>
+
     <p>
-        Every moment with you feels magical.<br>
-        I just have to ask… will you be my Valentine?
+        You make my heart feel safe, warm, and happy.<br>
+        So I just want to ask you one special thing…
     </p>
-    <p style="font-weight:bold; font-size:20px;">I love youu ❤️</p>
-    <button onclick="showLove()">Say Yes 💕</button>
+
+    <p><strong>Will you be my Valentine?</strong></p>
+
+    <button onclick="showLove()">Yes 💕</button>
+
+    <!-- Love text appears after click -->
+    <div id="loveText">I love youu ❤️</div>
 </div>
 
 <script>
-    // Confetti effect
-    function createConfetti() {
-        for(let i=0;i<100;i++){
-            const confetti = document.createElement('div');
-            confetti.classList.add('confetti-piece');
-            confetti.style.left = Math.random() * window.innerWidth + 'px';
-            confetti.style.backgroundColor = ['#ff3366','#ff66a3','#ff99c2','#ffb3cc'][Math.floor(Math.random()*4)];
-            confetti.style.animationDuration = (2 + Math.random()*3) + 's';
-            document.getElementById('confetti').appendChild(confetti);
-            setTimeout(()=> confetti.remove(), 3000);
-        }
+    // Floating hearts
+    for (let i = 0; i < 25; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
     }
 
     function showLove() {
-        alert("Yay! You just made my heart explode 💖 I love youu!");
-        createConfetti();
+        document.getElementById("loveText").style.display = "block";
+        alert("You just made my heart so happy 💖");
     }
 </script>
 
